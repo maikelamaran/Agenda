@@ -94,7 +94,7 @@ public class ContactoControlador {
         Contacto contacto = servicio.obtenerContactoPorId(Id);
         servicio.eliminarContatoPasandoContacto(contacto);
 
-        redirect.addFlashAttribute("mesgexito", "El contacto saldó la deuda, ha sido eliminado");
+        redirect.addFlashAttribute("mesgexito", "El contacto saldó la deuda, se eliminó");
         return "redirect:/";
     }
 
