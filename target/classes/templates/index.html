@@ -10,7 +10,24 @@
 
 <body>
 <div class="row justify-content-center">
-    <div class="col-md8 col-lg-7">
+
+    <div class="col-md2 col-lg-2 mp-3">
+        <!--    <form th:action="@{/{Id}/eliminar/(Id=${contacto.Id})}" method="post">-->
+        <div class="mb-3">
+            <form class="form-inline" th:action="@{/}">
+                <div class="form-group mb-2">
+<label>Filtrar:</label>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" name="param" class="form-control" id="param" th-value="${param}" placeholder="Valor a buscar" required>
+                </div>
+                <input type="submit" class="btn btn-info mb-2" value="Buscar">
+            </form>
+
+        </div>
+        <!--    </form>-->
+    </div>
+    <div class="col-md8 col-lg-8">
         <h1>Lista de Contactos</h1>
         <a href="/nuevo" class="btn btn-secondary">Añadir contacto</a>
         <div th:if="${mesgexito != null}">
@@ -73,5 +90,10 @@
         </script>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>

@@ -5,6 +5,7 @@ import com.agenda.contactos.repositorio.ContactoRepositorio;
 import com.agenda.contactos.service.ContactoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,9 +23,15 @@ public class ContactoControlador {
     @Autowired
     private ContactoService servicio;
 
-    @GetMapping({"/", ""})
-    public String verPaginaDeInicio(Model modelo) {
-        List<Contacto> contactos = servicio.listarTodosLosContactos();
+    @GetMapping({"/", "", "/{param}"})
+    public String verPaginaDeInicio(Model modelo, @Param("param") String param) {
+        List<Contacto> contactos = null;
+        if (param != null) {
+            contactos = servicio.encontrarFiltrado(param);
+        } else {
+            contactos = servicio.listarTodosLosContactos();
+
+        }
         modelo.addAttribute("contactos", contactos);
         return "index";
     }
@@ -97,6 +104,7 @@ public class ContactoControlador {
         redirect.addFlashAttribute("mesgexito", "El contacto saldó la deuda, se eliminó");
         return "redirect:/";
     }
+
 
 }
 

@@ -4,6 +4,7 @@ import com.agenda.contactos.modelo.Contacto;
 
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface ContactoService {
@@ -13,5 +14,7 @@ public interface ContactoService {
     public Contacto actualizarContacto(Contacto estudiante);
     public void eliminarContacto(Integer id);
     public void eliminarContatoPasandoContacto(Contacto contacto);
+    public List<Contacto> encontrarFiltrado(String param);
+
 
 }

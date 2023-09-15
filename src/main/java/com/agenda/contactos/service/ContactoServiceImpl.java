@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContactoServiceImpl implements ContactoService {
@@ -43,4 +44,15 @@ public class ContactoServiceImpl implements ContactoService {
     public void eliminarContatoPasandoContacto(Contacto contacto) {
         repositorio.delete(contacto);
     }
+
+    @Override
+    public List<Contacto> encontrarFiltrado(String param) {
+        return repositorio.encontrarFiltrado(param);
+    }
+
+
+
+
+
+
 }
